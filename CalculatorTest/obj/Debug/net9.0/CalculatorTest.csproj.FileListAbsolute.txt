@@ -165,3 +165,4 @@ C:\Users\demo\RiderProjects\Calculator\CalculatorTest\obj\Debug\net9.0\refint\Ca
 C:\Users\demo\RiderProjects\Calculator\CalculatorTest\obj\Debug\net9.0\CalculatorTest.pdb
 C:\Users\demo\RiderProjects\Calculator\CalculatorTest\obj\Debug\net9.0\CalculatorTest.genruntimeconfig.cache
 C:\Users\demo\RiderProjects\Calculator\CalculatorTest\obj\Debug\net9.0\ref\CalculatorTest.dll
+C:\Users\demo\RiderProjects\Calculator\CalculatorTest\obj\Debug\net9.0\CalculatorTest.sourcelink.json
