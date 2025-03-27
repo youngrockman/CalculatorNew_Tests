@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using NUnit.Framework.Internal;
 
 namespace CalculatorTests
 {
@@ -29,7 +30,7 @@ namespace CalculatorTests
         [Test]
         public void Add_TwoNegativeNumbers_ReturnsCorrectSum()
         {
-            Assert.AreEqual(2, Calculator.Add(-5, -3));
+            Assert.AreEqual(-8, Calculator.Add(-5, -3));
         }
 
         [Test]
@@ -39,9 +40,39 @@ namespace CalculatorTests
         }
 
         [Test]
+        public void Subtract_TwoNegativeNumbers_ReturnsCorrectDifference()
+        {
+            Assert.AreEqual(0, Calculator.Subtract(-2, -2));
+        }
+
+        [Test]
+        public void Subtract_OneNegativeNumber_ReturnsCorrectDifference()
+        {
+            Assert.AreEqual(8, Calculator.Subtract(5, -3));
+        }
+
+        [Test]
         public void Multiply_TwoNumbers_ReturnsCorrectProduct()
         {
             Assert.AreEqual(15, Calculator.Multiply(5, 3));
+        }
+
+        [Test]
+        public void Multiply_TwoNegativeNumbers_ReturnsCorrectProduct()
+        {
+            Assert.AreEqual(4, Calculator.Multiply(-2, -2));
+        }
+
+        [Test]
+        public void Multiply_WithZeroNumber_ReturnsCorrectProduct()
+        {
+            Assert.AreEqual(0, Calculator.Multiply(5, 0));
+        }
+
+        [Test]
+        public void Multiply_WithOneNegativeNumber_ReturnsCorrectProduct()
+        {
+            Assert.AreEqual(-30, Calculator.Multiply(10, -3));
         }
 
         [Test]
@@ -50,8 +81,9 @@ namespace CalculatorTests
             Assert.AreEqual(2, Calculator.Divide(6, 3));
         }
 
+
         [Test]
-        public void Divide_TwonNegativeNumbers_ReturnsCorrectQuotient()
+        public void Divide_TwoNegativeNumbers_ReturnsCorrectQuotient()
         {
             Assert.AreEqual(3, Calculator.Divide(-1, -3));
         }
