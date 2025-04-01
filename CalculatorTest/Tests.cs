@@ -8,6 +8,8 @@
         double result = Calculator.Add(a, b);
         Assert.AreEqual(8, result);
     }
+    
+    
 
     [Test]
     public void Add_TwoNegativeNumbers_ReturnsCorrectSum()
@@ -270,6 +272,125 @@
         double a = 2.25;
         double result = Calculator.Sqrt(a);
         Assert.AreEqual(1.5, result);
+    }
+    
+
+
+    [Test]
+    public void Subtract_DecimalNumbers_ReturnsCorrectDifference()
+    {
+        double a = 5.5;
+        double b = 3.2;
+        double result = Calculator.Subtract(a, b);
+        Assert.AreEqual(2.3, result, 0.0001);
+    }
+
+    [Test]
+    public void Multiply_DecimalNumbers_ReturnsCorrectProduct()
+    {
+        double a = 2.5;
+        double b = 1.5;
+        double result = Calculator.Multiply(a, b);
+        Assert.AreEqual(3.75, result, 0.0001);
+    }
+
+    [Test]
+    public void Divide_DecimalNumbers_ReturnsCorrectQuotient()
+    {
+        double a = 5.5;
+        double b = 2.0;
+        double result = Calculator.Divide(a, b);
+        Assert.AreEqual(2.75, result, 0.0001);
+    }
+
+    [Test]
+    public void Power_DecimalExponent_ReturnsCorrectResult()
+    {
+        double a = 4;
+        double b = 0.5;
+        double result = Calculator.Power(a, b);
+        Assert.AreEqual(2, result, 0.0001);
+    }
+
+    [Test]
+    public void Sqrt_DecimalNumber_ReturnsCorrectResult()
+    {
+        double a = 6.25;
+        double result = Calculator.Sqrt(a);
+        Assert.AreEqual(2.5, result, 0.0001);
+    }
+
+    [Test]
+    public void Factorial_OfDecimal_ThrowsException()
+    {
+        double n = 5.5;
+        Assert.Throws<ArgumentException>(() => Calculator.Factorial(n));
+    }
+
+    [Test]
+    public void ParseInput_WithNonNumeric_ThrowsException()
+    {
+        string input = "abc";
+        Assert.Throws<FormatException>(() => Convert.ToDouble(input));
+    }
+
+    [Test]
+    public void ParseInput_WithVeryLargeNumber_ThrowsException()
+    {
+        string input = "1E+400";
+        Assert.Throws<OverflowException>(() => Convert.ToDouble(input));
+    }
+
+    [Test]
+    public void Add_WithMaxDoubleValue_ReturnsInfinity()
+    {
+        double a = double.MaxValue;
+        double b = double.MaxValue;
+        double result = Calculator.Add(a, b);
+        Assert.IsTrue(double.IsInfinity(result));
+    }
+
+    [Test]
+    public void Multiply_WithVerySmallNumbers_ReturnsCorrectResult()
+    {
+        double a = 1E-300;
+        double b = 1E-300;
+        double result = Calculator.Multiply(a, b);
+        Assert.AreEqual(1E-600, result, 1E-615);
+    }
+    
+
+    [Test]
+    public void Power_WithFractionalBaseAndExponent_ReturnsCorrectResult()
+    {
+        double a = 2.5;
+        double b = 1.5;
+        double result = Calculator.Power(a, b);
+        Assert.AreEqual(Math.Pow(2.5, 1.5), result, 0.0001);
+    }
+
+    [Test]
+    public void Factorial_OfLargeNumber_ReturnsInfinity()
+    {
+        int n = 200;
+        double result = Calculator.Factorial(n);
+        Assert.IsTrue(double.IsInfinity(result));
+    }
+
+    [Test]
+    public void ParseInput_WithCommaAsDecimalSeparator_WorksCorrectly()
+    {
+        string input = "3,14";
+        double result = Convert.ToDouble(input);
+        Assert.AreEqual(3.14, result, 0.0001);
+    }
+
+    [Test]
+    public void ParseInput_WithLeadingTrailingSpaces_WorksCorrectly()
+    {
+        string input = "3.14";
+        double result = Convert.ToDouble(input);
+        Assert.AreEqual(3.14, result, 0.0001);
     }
 }
     
